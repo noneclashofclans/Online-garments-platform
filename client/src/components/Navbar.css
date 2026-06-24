@@ -1,0 +1,140 @@
+.navbar-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(74, 75, 78);
+    padding: 10px 5%;
+    color: white;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo img {
+    width: 120px;
+    height: auto;
+    border-radius: 40%;
+    cursor: pointer;
+}
+
+.brand-title h2 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.nav-links li:hover {
+    opacity: 0.8;
+}
+
+.nav-cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    position: relative;
+}
+
+.cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cart-badge.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.cta {
+    background: white;
+    color: rgb(0, 132, 255);
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .navbar-main {
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-top: 8px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 4px 0;
+    }
+
+    .cta {
+        display: inline-block;
+        border-radius: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-main {
+        padding: 10px 4%;
+    }
+
+    .nav-logo img {
+        width: 90px;
+    }
+
+    .brand-title h2 {
+        font-size: 1.2rem;
+    }
+}
