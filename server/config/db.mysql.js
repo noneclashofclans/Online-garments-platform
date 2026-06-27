@@ -46,7 +46,7 @@ const ensure_database_and_user = async() => {
         throw new Error('Set MYSQL_DB and MYSQL_USER first');
     }
 
-    const admin_connection = await mysql.createConnection(get_admin_connection_config);
+    const admin_connection = await mysql.createConnection(get_admin_connection_config());
 
     try{
         const escapedDb = mysql.escapeId(dbName);
@@ -56,7 +56,7 @@ const ensure_database_and_user = async() => {
         if (process.env.MYSQL_ROOT_USER && appUser !== process.env.MYSQL_ROOT_USER) {
             const escapedUser = mysql.escape(appUser);
             const escapedPass = mysql.escape(appPassword);
-            await adminConnection.query(
+            await admin_connection.query(
                 `CREATE USER IF NOT EXISTS ${escapedUser}@'%' IDENTIFIED BY ${escapedPass}; ` +
                 `GRANT ALL PRIVILEGES ON ${escapedDb}.* TO ${escapedUser}@'%'; ` +
                 'FLUSH PRIVILEGES;'
