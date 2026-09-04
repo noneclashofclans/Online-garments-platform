@@ -269,8 +269,8 @@
     align-items: center;
     justify-content: center;
 
-    background: var(--grm-paper);
-    color: var(--grm-ink);
+    background: rgb(53, 52, 52);
+    color: white;
 
     padding: 9px 20px;
 

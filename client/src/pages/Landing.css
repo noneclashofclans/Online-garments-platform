@@ -12,7 +12,7 @@
     --grm-ink: #1B1812;
     --grm-ink-soft: #6B655A;
     --grm-line: rgba(27, 24, 18, 0.14);
-    --grm-accent: #C81F3D;
+    --grm-accent: #e5e2e3;
     --grm-accent-deep: #7A1229;
 
     --grm-font-display: 'Bodoni Moda', 'Times New Roman', serif;
@@ -273,7 +273,7 @@
 }
 
 .grm-caption-price {
-    font-size: 0.85rem;
+    font-size: 2rem;
     color: var(--grm-accent);
     font-weight: 600;
     white-space: nowrap;
