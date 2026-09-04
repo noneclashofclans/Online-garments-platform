@@ -1,3 +1,22 @@
+/* =========================================================
+   Garmy — Navbar.css
+   Shares tokens with Landing.css: paper / ink / accent
+========================================================= */
+
+:root {
+    --grm-paper: #F5F0E8;
+    --grm-paper-dim: #ECE5D8;
+    --grm-ink: #1B1812;
+    --grm-ink-soft: #6B655A;
+    --grm-line: rgba(245, 240, 232, 0.14);
+    --grm-accent: #C81F3D;
+    --grm-accent-deep: #7A1229;
+
+    --grm-font-display: 'Bodoni Moda', 'Times New Roman', serif;
+    --grm-font-body: 'Inter', -apple-system, sans-serif;
+}
+
+
 /* =========================
    Main Navbar
 ========================= */
@@ -12,19 +31,15 @@
     padding: 10px 5%;
     box-sizing: border-box;
 
-    background: linear-gradient(
-        135deg,
-        rgb(55, 57, 61),
-        rgb(74, 75, 78)
-    );
+    background: var(--grm-ink);
+    border-bottom: 1px solid var(--grm-line);
 
-    color: white;
+    color: var(--grm-paper);
+    font-family: var(--grm-font-body);
 
     position: sticky;
     top: 0;
     z-index: 1000;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 
     flex-wrap: wrap;
     gap: 12px;
@@ -49,28 +64,21 @@
 .nav-logo {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .nav-logo img {
-    width: 105px;
-    height: 55px;
+    width: 42px;
+    height: 42px;
 
     object-fit: cover;
+    border-radius: 2px;
 
-    border-radius: 14px;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: opacity 0.2s ease;
 }
 
-.nav-logo img:hover {
-    transform: scale(1.04);
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.25);
+.nav-logo:hover img {
+    opacity: 0.8;
 }
 
 
@@ -81,12 +89,14 @@
 .brand-title h2 {
     margin: 0;
 
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-family: var(--grm-font-display);
+    font-weight: 500;
+    font-size: 1.45rem;
 
-    letter-spacing: 0.8px;
+    letter-spacing: 0.01em;
 
     white-space: nowrap;
+    color: var(--grm-paper);
 }
 
 
@@ -100,22 +110,20 @@
     background: transparent;
     border: none;
 
-    color: white;
+    color: var(--grm-paper);
 
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    line-height: 1;
 
     padding: 6px;
 
     cursor: pointer;
 
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .menu-toggle:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
+    color: var(--grm-accent);
 }
 
 
@@ -129,7 +137,7 @@
 
     list-style: none;
 
-    gap: 28px;
+    gap: 30px;
 
     margin: 0;
     padding: 0;
@@ -140,24 +148,28 @@
 
     cursor: pointer;
 
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-weight: 500;
+    color: var(--grm-paper-dim);
 
     white-space: nowrap;
 
-    transition:
-        color 0.25s ease,
-        transform 0.25s ease;
+    transition: color 0.2s ease;
 }
 
 .nav-links li:hover {
-    color: #60a5fa;
-    transform: translateY(-1px);
+    color: var(--grm-paper);
+}
+
+.nav-links li:focus-visible {
+    outline: 2px solid var(--grm-accent);
+    outline-offset: 4px;
+    border-radius: 2px;
 }
 
 
 /* =========================
-   Optional underline effect
+   Underline effect (accent)
 ========================= */
 
 .nav-links li::after {
@@ -169,11 +181,9 @@
     bottom: -6px;
 
     width: 0;
-    height: 2px;
+    height: 1.5px;
 
-    background: #60a5fa;
-
-    border-radius: 2px;
+    background: var(--grm-accent);
 
     transition: width 0.25s ease;
 }
@@ -184,16 +194,33 @@
 
 
 /* =========================
+   Greeting (non-interactive)
+========================= */
+
+.nav-greeting {
+    cursor: default;
+    color: var(--grm-paper-dim);
+    font-style: italic;
+    font-family: var(--grm-font-display);
+}
+
+.nav-greeting:hover {
+    color: var(--grm-paper-dim);
+}
+
+.nav-greeting::after {
+    display: none;
+}
+
+
+/* =========================
    Cart
 ========================= */
 
 .nav-cart-link {
     display: inline-flex;
-
     align-items: center;
-
-    gap: 0.45rem;
-
+    gap: 0.5rem;
     position: relative;
 }
 
@@ -204,30 +231,27 @@
 
 .cart-badge {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
-    min-width: 21px;
-    height: 21px;
+    min-width: 20px;
+    height: 20px;
 
     padding: 0 6px;
 
     border-radius: 999px;
 
-    background: #ef4444;
-    color: white;
+    background: var(--grm-accent);
+    color: var(--grm-paper);
 
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: var(--grm-font-body);
 
     opacity: 0;
-
     transform: scale(0.7);
 
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .cart-badge.visible {
@@ -245,37 +269,30 @@
     align-items: center;
     justify-content: center;
 
-    background: white;
-    color: rgb(0, 132, 255);
+    background: var(--grm-paper);
+    color: var(--grm-ink);
 
-    padding: 8px 18px;
+    padding: 9px 20px;
 
-    border-radius: 22px;
+    border-radius: 2px;
 
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 0.9rem;
 
-    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.15);
-
-    transition:
-        transform 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease;
+.cta::after {
+    display: none;
 }
 
 .cta:hover {
-    background: #eff6ff;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.2);
+    background: var(--grm-accent);
+    color: var(--grm-paper);
 }
 
 .cta:active {
-    transform: scale(0.96);
+    transform: scale(0.98);
 }
 
 
@@ -287,7 +304,6 @@
 
     .navbar-main {
         padding: 10px 4%;
-
         gap: 0;
     }
 
@@ -305,16 +321,14 @@
         width: 100%;
 
         flex-direction: column;
-
         align-items: stretch;
 
-        gap: 4px;
+        gap: 2px;
 
         padding: 15px 0 5px;
-
         margin-top: 8px;
 
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-top: 1px solid var(--grm-line);
     }
 
     .nav-links.open {
@@ -324,17 +338,14 @@
     .nav-links li {
         width: 100%;
 
-        padding: 10px 12px;
+        padding: 12px 10px;
 
         box-sizing: border-box;
-
-        border-radius: 8px;
+        border-radius: 2px;
     }
 
     .nav-links li:hover {
-        background: rgba(255, 255, 255, 0.08);
-
-        transform: none;
+        background: rgba(245, 240, 232, 0.06);
     }
 
     .nav-links li::after {
@@ -343,11 +354,7 @@
 
     .cta {
         width: 100%;
-
-        padding: 10px 15px;
-
-        border-radius: 10px;
-
+        padding: 11px 15px;
         box-sizing: border-box;
     }
 }
@@ -361,25 +368,20 @@
 
     .navbar-main {
         min-height: 60px;
-
         padding: 8px 4%;
     }
 
     .nav-logo img {
-        width: 80px;
-        height: 45px;
-
-        border-radius: 10px;
+        width: 34px;
+        height: 34px;
     }
 
     .brand-title h2 {
-        font-size: 1.05rem;
-
-        letter-spacing: 0.4px;
+        font-size: 1.2rem;
     }
 
     .menu-toggle {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
     }
 
     .nav-links {

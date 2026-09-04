@@ -72,11 +72,24 @@ const Navbar = () => {
     };
   }, []);
 
+  // Fires a nav item's action on click or on Enter/Space, for keyboard users
+  const activate = (fn) => ({
+    onClick: fn,
+    onKeyDown: (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fn();
+      }
+    },
+    role: 'button',
+    tabIndex: 0,
+  });
+
   return (
     <nav className='navbar-main'>
       <div className='nav-left'>
-        <div className='nav-logo' onClick={() => handleNav('/')}>
-          <img src={logo_garmy} alt='garmy-logo' />
+        <div className='nav-logo' {...activate(() => handleNav('/'))} aria-label="Garmy home">
+          <img src={logo_garmy} alt='' />
         </div>
 
         <div className='brand-title'>
@@ -88,23 +101,24 @@ const Navbar = () => {
         className='menu-toggle'
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label='Toggle navigation menu'
+        aria-expanded={menuOpen}
       >
         ☰
       </button>
 
       <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
         {user ? (
-          <li>Welcome, {user.name || user.firstName}</li>
+          <li className='nav-greeting'>Welcome, {user.name || user.firstName}</li>
         ) : (
-          <li onClick={() => handleNav('/login')}>Login/Register</li>
+          <li {...activate(() => handleNav('/login'))}>Login / Register</li>
         )}
-        <li onClick={() => handleNav('/')}>Home</li>
-        <li onClick={() => handleNav('/orders')}>Orders</li>
-        <li className='nav-cart-link' onClick={() => handleNav('/cart')}>
+        <li {...activate(() => handleNav('/'))}>Home</li>
+        <li {...activate(() => handleNav('/orders'))}>Orders</li>
+        <li className='nav-cart-link' {...activate(() => handleNav('/cart'))}>
           Cart
           <span className={`cart-badge ${cartCount > 0 ? 'visible' : ''}`}>{cartCount}</span>
         </li>
-        <li className='cta' onClick={() => handleNav('/about')}>Know Us!</li>
+        <li className='cta' {...activate(() => handleNav('/about'))}>Know Us</li>
       </ul>
     </nav>
   );
