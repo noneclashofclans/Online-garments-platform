@@ -11,20 +11,31 @@ const AboutUs = () => {
 
                 {/* Hero Section */}
                 <section className="about-hero">
-                    <div className="about-hero-content">
-                        <span>WHO WE ARE</span>
+                    <div className="hero-frame">
+                        <p className="hero-kicker">Who we are</p>
 
                         <h1>
-                            Style that feels
+                            Clothing that keeps up
                             <br />
-                            <strong>uniquely yours.</strong>
+                            with who you're becoming.
                         </h1>
 
                         <p>
                             We bring together modern fashion, quality clothing,
                             and timeless styles to help you look and feel your best.
                         </p>
+
+                        <div className="hero-swatches" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
+
+                    <div className="hero-seam" aria-hidden="true"></div>
                 </section>
 
 
@@ -33,7 +44,7 @@ const AboutUs = () => {
 
                     <div className="about-text">
                         <span className="section-label">
-                            ABOUT US
+                            About us
                         </span>
 
                         <h2>
@@ -57,33 +68,45 @@ const AboutUs = () => {
                     <div className="about-highlight">
 
                         <div className="highlight-box">
-                            <h3>Quality</h3>
-                            <p>
-                                Carefully selected products made with quality
-                                and comfort in mind.
-                            </p>
+                            <span className="index">01</span>
+                            <div>
+                                <h3>Quality</h3>
+                                <p>
+                                    Carefully selected products made with quality
+                                    and comfort in mind.
+                                </p>
+                            </div>
                         </div>
 
                         <div className="highlight-box">
-                            <h3>Style</h3>
-                            <p>
-                                Modern and timeless designs for every occasion.
-                            </p>
+                            <span className="index">02</span>
+                            <div>
+                                <h3>Style</h3>
+                                <p>
+                                    Modern and timeless designs for every occasion.
+                                </p>
+                            </div>
                         </div>
 
                         <div className="highlight-box">
-                            <h3>Value</h3>
-                            <p>
-                                Great fashion at prices that make sense.
-                            </p>
+                            <span className="index">03</span>
+                            <div>
+                                <h3>Value</h3>
+                                <p>
+                                    Great fashion at prices that make sense.
+                                </p>
+                            </div>
                         </div>
 
                         <div className="highlight-box">
-                            <h3>Customer First</h3>
-                            <p>
-                                Your satisfaction is at the heart of everything
-                                we do.
-                            </p>
+                            <span className="index">04</span>
+                            <div>
+                                <h3>Customer first</h3>
+                                <p>
+                                    Your satisfaction is at the heart of everything
+                                    we do.
+                                </p>
+                            </div>
                         </div>
 
                     </div>
@@ -95,18 +118,16 @@ const AboutUs = () => {
                 <section className="mission-section">
 
                     <span className="section-label">
-                        OUR MISSION
+                        Our mission
                     </span>
 
-                    <h2>
+                    <blockquote>
                         Making every outfit count.
-                    </h2>
+                    </blockquote>
 
-                    <p>
-                        Our mission is to make fashion shopping simple,
-                        enjoyable, and accessible. We want every customer
-                        to find clothing that reflects their personality
-                        and makes them feel confident.
+                    <p className="attribution">
+                        Simple, enjoyable, accessible fashion shopping for
+                        everyone who wears it.
                     </p>
 
                 </section>
@@ -124,7 +145,7 @@ const AboutUs = () => {
                     </p>
 
                     <button>
-                        Explore Collection
+                        Explore collection
                     </button>
 
                 </section>
