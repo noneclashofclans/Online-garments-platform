@@ -17,11 +17,13 @@ const Login = () => {
 
   const handle_login_submit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     if (!formData.username || !formData.password) {
       alert('Fill up all details');
+      return;
     }
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -56,14 +58,32 @@ const Login = () => {
       <Navbar />
       <div className='login-page'>
         <div className='login-card'>
-          <h2>Welcome Back</h2>
+          <span className='login-kicker'>Member access</span>
+          <h2>Welcome back</h2>
+          <p>Sign in to pick up where you left off.</p>
 
           <form className='login-form' onSubmit={handle_login_submit}>
-            <label htmlFor='name'>Username</label>
-            <input id='name' type='name' value={formData.username} onChange={(e) => setFormData({ ...formData, username: e.target.value })} placeholder='Username' />
+            <label htmlFor='username'>Username</label>
+            <input
+              id='username'
+              name='username'
+              type='text'
+              autoComplete='username'
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              placeholder='Username'
+            />
 
             <label htmlFor='password'>Password</label>
-            <input id='password' type='password' value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} placeholder='Enter your password' />
+            <input
+              id='password'
+              name='password'
+              type='password'
+              autoComplete='current-password'
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              placeholder='Enter your password'
+            />
 
             <button className='login-btn' type='submit' disabled={loading}>
               {loading ? 'Logging in...' : 'Log in'}
