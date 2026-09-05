@@ -32,28 +32,33 @@ const Cart = () => {
     return headers;
   };
 
-  const fetchCart = async () => {
+  const fetch_cart_details = async() => {
     setLoading(true);
     setError('');
 
-    try {
-      const { data } = await axios.get(`${BASE_URL}/api/cart`, {
-        headers: getAuthHeaders(),
+    try{
+      const { cart_data } = await axios.get(`${BASE_URL}/api/cart`, {
+        headers: getAuthHeaders()
       });
-      setCart(data || { items: [] });
-      const count = (data?.items || []).reduce((sum, item) => sum + Number(item.quantity || 1), 0);
-      localStorage.setItem('cartCount', String(count));
+
+      setCart(cart_data || { items : [] });
+
+      const count_cart_items = (cart_data?.items || []).reduce((accumulator, currentValue) => accumulator + Number(currentValue.quantity || 1), 0);
+
+      localStorage.setItem('cartCount', String(count_cart_items));
       window.dispatchEvent(new Event('cart-updated'));
-    } catch (err) {
+    }
+    catch(err){
       console.error('Unable to load cart:', err);
       setError(err.response?.data?.message || 'Unable to load your cart right now.');
-    } finally {
+    }
+    finally{
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCart();
+    fetch_cart_details();
   }, []);
 
   const subtotal = useMemo(() => {

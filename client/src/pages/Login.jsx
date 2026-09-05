@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate()
-  const BASE_LINK = "http://localhost:5000";
+  const LOGIN_URL = "http://localhost:5000";
 
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_LINK}/api/auth/login`,
+        `${LOGIN_URL}/api/auth/login`,
         {
           username: formData.username,
           password: formData.password

@@ -1,4 +1,4 @@
-import React, { useState } from 'react' // Added useState
+import React, { useState } from 'react' 
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
@@ -6,7 +6,7 @@ import './Register.css'
 
 const Register = () => {
   const navigate = useNavigate();
-  const BASE_LINK = "http://localhost:5000";
+  const REGISTER_URL = "http://localhost:5000";
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -20,7 +20,7 @@ const Register = () => {
 
     try {
 
-      await axios.post(`${BASE_LINK}/api/auth/register`, formData);
+      await axios.post(`${REGISTER_URL}/api/auth/register`, formData);
       alert('Registration successful! Please login.');
 
       navigate('/login');
